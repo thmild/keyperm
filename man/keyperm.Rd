@@ -38,4 +38,18 @@ Currently, the following types of scores are supported:
     \item{\code{diff}}{Difference of relative frequencies}
     \item{\code{logratio}}{Binary logarithm of the ratio of the relative frequencies, possibly using a laplace correction to avoid infinite values.}
  }
+
+\code{llr} and \code{chisq} are the test-statistics for a two-by-two contingency table. Both measure deviations from equal proportions but do not indicate the direction. For \code{llr}, the correct version using terms for all four fields of the table is used, not the version using only two terms that is sometimes used in corpus linguistics.
+
+\code{diff} and \code{logratio} are measures of the effect size, but using the permutation approach implemented here a p-value can be calculated as well. Both indicate the direction of the effect, and can be used for one- or two-sided tests.
+
+\code{logratio} is based on a ratio of ratios and would be infinite when a term does not occur in either of the two corpora, irrespective of number of occurences in the other corpus. Hence, we use a laplace correction adding a (not neccesarily integer) number \eqn{k} of ficticious occurences to both corpora: 
+ \deqn{logratio = log2( ((n_A + k) / (N_A + k)) / ((n_B + k) / (N_B + k)) }
+ where \eqn{n_A} and \eqn{n_B} are the number of occurences of the term of interest in Corpora A and B 
+ and \eqn{N_A} and \eqn{N_B} are the total numbers of tokens in A and B. 
+ Setting \eqn{k} to zero corresponds to the usual logratio (which may be 
+ infinite). \eqn{k} is given by the \code{laplace} argument and 
+ defaults to one, meaning one ficticious occurence is added to 
+ either corpus. Doing so prevents infinite values but has little 
+ effect when the number of occurences is large.
 }
