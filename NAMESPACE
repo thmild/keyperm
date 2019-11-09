@@ -1,3 +1,5 @@
 useDynLib(keyperm, .registration=TRUE)
 importFrom(Rcpp, evalCpp)
-exportPattern("^[[:alpha:]]+")
+export(create_ifl)
+export(keyness_scores)
+export(keyperm)
