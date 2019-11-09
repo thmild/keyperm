@@ -1,6 +1,5 @@
 \name{keyperm-package}
 \alias{keyperm-package}
-\alias{keyperm}
 \docType{package}
 \title{\packageTitle{keyperm}}
 \description{\packageDescription{keyperm}}
