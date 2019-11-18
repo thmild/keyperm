@@ -42,7 +42,7 @@ create_ifl <- function(tdm,
   tdm_df <- data.frame(term = tdm$i, doc = tdm$j, freq = tdm$v)
   tdm_df <- tdm_df[order(tdm_df$doc),] # sort by document
   
-  doc_lookup <- aggregate(term ~ doc, tdm_df, length)
+  doc_lookup <- stats::aggregate(term ~ doc, tdm_df, length)
   names(doc_lookup)[2] <- "nterms"
   
   # this is necessary so that we can handle empty documents
