@@ -54,6 +54,9 @@
 #' @param type The type of keyness measure. One of \code{llr}, \code{chisq}, \code{diff} or \code{logratio}. See details. 
 #' @param laplace Parameter of laplace correction. Only relevant for \code{type = "logratio"}. See details. 
 #' @return a numerical vector of the scores, one for each term. 
+#' 
+#' @useDynLib keyperm, .registration = TRUE
+#' @export
 keyness_scores <- function(ifl, 
                           type = "llr",
                           laplace = 1.0) {

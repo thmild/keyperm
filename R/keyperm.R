@@ -71,6 +71,8 @@
 #' @return A numeric matrix with number of rows equal to the number of terms. The columns contain either all permutation values
 #'     of the keyness score (\code{output = 1}) or the number of permutations for which the 
 #'     score is strictly smaller than, equal to or strictly larger than the observed value (\code{output = 2}).  
+#'     
+#' @export
 keyperm <- function(ifl,
                     observed,
                     type = "llr",

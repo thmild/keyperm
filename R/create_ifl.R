@@ -19,6 +19,7 @@
 #' @param subset_docs vector of documents to be considered. Can be integer (indices) or boolean. Documents excluded do not contribute to total number of occurences of a term. 
 #' @param corpus vector indicating which documents belong to corpus A (first corpus). Can be integer (indices) or boolean. Currently, only comparisons of two corpora are supported.
 #' @return A list with class \code{indexed_frequency_list} containing the following components:
+#' @export
 create_ifl <- function(tdm, 
                        subset_terms = 1:dim(tdm)[1],
                        subset_docs = 1:dim(tdm)[2],
