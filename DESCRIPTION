@@ -11,4 +11,4 @@ Imports: Rcpp (>= 1.0.1),
     slam,
     tm
 LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0

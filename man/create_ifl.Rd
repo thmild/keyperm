@@ -4,8 +4,12 @@
 \alias{create_ifl}
 \title{Create an Indexed Frequency List}
 \usage{
-create_ifl(tdm, subset_terms = 1:dim(tdm)[1],
-  subset_docs = 1:dim(tdm)[2], corpus)
+create_ifl(
+  tdm,
+  subset_terms = 1:dim(tdm)[1],
+  subset_docs = 1:dim(tdm)[2],
+  corpus
+)
 }
 \arguments{
 \item{tdm}{a tdm-matrix from the tm package. Currently, this is the only supported input, but others may be added in later versions.}

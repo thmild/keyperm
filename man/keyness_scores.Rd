@@ -31,14 +31,37 @@ Currently, the following types of scores are supported:
     \item{\code{logratio}}{Binary logarithm of the ratio of the relative frequencies, possibly using a laplace correction to avoid infinite values.}
  }
 
-\code{llr} and \code{chisq} are the test-statistics for a two-by-two contingency table. Both measure deviations from equal proportions but do not indicate the direction. For \code{llr}, the correct version using terms for all four fields of the table is used, not the version using only two terms that is sometimes used in corpus linguistics.
+ \code{llr} and \code{chisq} are the test-statistics for a two-by-two contingency table. 
+\tabular{rccc}{
+\tab corpus A   \tab corpus B \tab TOTAL\cr
+term of interest \tab \eqn{o_{11}}{o11}  \tab \eqn{o_{12}}{o12} \tab \eqn{r_{1}}{r1}\cr
+other tokens \tab \eqn{o_{21}}{o21}    \tab \eqn{o_{22}}{o22} \tab \eqn{r_{2}}{r2}\cr
+TOTAL \tab \eqn{c_{1}}{c1}    \tab \eqn{c_{2}}{c2} \tab N\cr
+}
+Both measure deviations from equal proportions but do not indicate the direction. 
+For \code{llr}, the correct version using terms for all four fields of the table is used, 
+not the version using only two terms that is sometimes used in corpus linguistics:
+\deqn{llr = -2 * (o11 * log(o11/e11) + o12 * log(o12/e12) + 
+o21 * log(o21/e21) + o22 * log(o22/e22))}
+where \eqn{oij * log(oij/eij) = 0} if \eqn{oij = 0}.
 
-\code{diff} and \code{logratio} are measures of the effect size, but using the permutation approach implemented here a p-value can be calculated as well. Both indicate the direction of the effect, and can be used for one- or two-sided tests.
+\code{chisq} is the usual Chi-Square statistic for a test of independece / homogeneity:
+\deqn{chisq = (o11 - e11)^2/e11 + (o12 - e12)^2/e12 + 
+(o21 - e21)^2/e21 + (o22 - e22)^2/e22}
+
+Here, \eqn{oij} are the observed counts as given above and \eqn{eij}
+are the correpsonding expected values under an independence / homogeneity assumption.   
+
+\code{diff} and \code{logratio} are measures of the effect size, 
+but using the permutation approach implemented here a p-value can
+be calculated as well. Both indicate the direction of the effect,
+and can be used for one- or two-sided tests. 
+\deqn{diff = o11 / c1 - o12 / c2}
 
 \code{logratio} is based on a ratio of ratios and would be infinite when a term does not occur in either of the two corpora, irrespective of number of occurences in the other corpus. Hence, we use a laplace correction adding a (not neccesarily integer) number \eqn{k} of ficticious occurences to both corpora: 
- \deqn{logratio = log2( ((n_A + k) / (N_A + k)) / ((n_B + k) / (N_B + k)) }
- where \eqn{n_A} and \eqn{n_B} are the number of occurences of the term of interest in Corpora A and B 
- and \eqn{N_A} and \eqn{N_B} are the total numbers of tokens in A and B. 
+ \deqn{logratio = log2( ((o11 + k) / (c1 + k)) / ((o12 + k) / (c2 + k)) }
+ where \eqn{o11} and \eqn{o12} are the number of occurences of the term of interest in Corpora A and B 
+ and \eqn{c1} and \eqn{c2} are the total numbers of tokens in A and B. 
  Setting \eqn{k} to zero corresponds to the usual logratio (which may be 
  infinite). \eqn{k} is given by the \code{laplace} argument and 
  defaults to one, meaning one ficticious occurence is added to 
