@@ -2,8 +2,8 @@
 % Please edit documentation in R/keyperm-package.R
 \docType{package}
 \name{keyperm-package}
-\alias{keyperm}
 \alias{keyperm-package}
+\alias{_PACKAGE}
 \title{keyperm: Keyword Analysis Using Permutation Tests}
 \description{
 Implementation of permutation-based keyword analysis for corpus linguistics.
