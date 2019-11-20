@@ -64,8 +64,8 @@
 #' @param observed The vector of observed values of the keyness scores as generarted by \code{keyness_scores()}
 #' @param type The type of keyness measure. One of \code{llr}, \code{chisq}, \code{diff} or \code{logratio}. See details. 
 #' @param laplace Parameter of laplace correction. Only relevant for \code{type = "logratio"}. See details. 
-#' @param output The type of output. \code{output = 1} a matrix with all generated scores is returned,
-#'     for \code{output = 2} a matrix with three columns counting the number of permutations for which the 
+#' @param output The type of output. For \code{output = "full"} a matrix with all generated scores is returned,
+#'     for \code{output = "counts"} a matrix with three columns counting the number of permutations for which the 
 #'     score is strictly smaller than, equal to or strictly larger than the observed value. 
 #' @param nperm The number of permutations to generate.         
 #' @return A numeric matrix with number of rows equal to the number of terms. The columns contain either all permutation values
@@ -77,14 +77,16 @@ keyperm <- function(ifl,
                     observed,
                     type = "llr",
                     laplace = 1.0,
-                    output = 2,
+                    output = "counts",
                     nperm) {
   scoretype <- switch(type,
                       llr = 1,
                       chisq = 2,
                       diff = 3,
                       logratio = 4)
-
+  outtype <- switch(output,
+                    full = 1,
+                    counts = 2)
   out <-  genPerm(ind = ifl$corp_A,
                   start_vek = ifl$index$start,
                   nterm = ifl$index$nterms,
@@ -94,7 +96,7 @@ keyperm <- function(ifl,
                   colsums = ifl$colsums,
                   ntotal = ifl$ntotal,
                   nperm = nperm,
-                  output = output,
+                  output = outtype,
                   scoretype = scoretype,
                   observed = observed,
                   laplace = laplace
