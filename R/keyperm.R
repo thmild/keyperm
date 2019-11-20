@@ -101,6 +101,13 @@ keyperm <- function(ifl,
                   observed = observed,
                   laplace = laplace
   )
+  class(out) <- paste0("keyperm_results_", output)
+  attr(out, "scoretype") <- type
+  attr(out, "output") <- output
+  if (outtype == 1) {
+     attr(out, "dimnames") <- list(ifl$terms, NULL)
+   } else 
+      attr(out, "dimnames") <- list(ifl$terms, c("less", "equal", "greater"))
   out
 }
 
