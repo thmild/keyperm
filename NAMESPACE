@@ -3,4 +3,5 @@
 export(create_ifl)
 export(keyness_scores)
 export(keyperm)
+export(p_value)
 useDynLib(keyperm, .registration = TRUE)
