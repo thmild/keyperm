@@ -6,6 +6,7 @@ const int score_llr = 1;
 const int score_chisq = 2;
 const int score_diff = 3;
 const int score_logratio = 4;
+const int score_ratio = 5;
 
 const int return_scores = 1;
 const int return_summary = 2;
@@ -137,6 +138,8 @@ NumericVector getScores(IntegerVector ind,
     out = Anum / NcorpA  - Cnum / NcorpB;   
   } else if (scoretype == score_logratio) {  
     out = one_over_log2 * log((Anum + laplace) / (NcorpA  + laplace))  - one_over_log2 *log((Cnum  + laplace)/ (NcorpB  + laplace));   
+  } else if (scoretype == score_ratio) {  
+    out = ((Anum + laplace) / (NcorpA  + laplace)) / ((Cnum  + laplace)/ (NcorpB  + laplace));   
   }
   
   

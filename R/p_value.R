@@ -54,7 +54,8 @@ p_value <- function(results, alternative = NULL) {
                           llr = "greater",
                           chisq = "greater",
                           diff = "two.sided",
-                          logratio = "two.sided")
+                          logratio = "two.sided",
+                          ratio = "two.sided")
   }  
   if (!(alternative %in% c("two.sided", "greater", "less")))
     stop("alternative must be one of \"two.sided\", \"greater\", or \"less\"")
