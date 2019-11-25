@@ -1,7 +1,7 @@
 Package: keyperm
 Type: Package
 Title: Keyword Analysis Using Permutation Tests
-Version: 0.0.0.9009
+Version: 0.0.0.9010
 Authors@R: person("Thoralf", "Mildenberger", email = "mild@zhaw.ch", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0001-7242-1873"))
 Description: Implementation of permutation-based keyword analysis for corpus linguistics.
