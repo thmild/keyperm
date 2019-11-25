@@ -29,7 +29,8 @@ ABCD getABCD(IntegerVector ind,
              IntegerVector termlist, 
              IntegerVector rowsums, 
              IntegerVector colsums, 
-             int ntotal) {
+             int ntotal,
+             int scoretype) {
   
   int nt = rowsums.size();
   int nind = ind.size();
@@ -58,40 +59,48 @@ ABCD getABCD(IntegerVector ind,
   
   out.NcorpB = ntotal - out.NcorpA;
   
-  for (int i = 0; i < nt; i ++) {
-    out.B[i] = out.NcorpA - out.A[i];
-    out.C[i] = rowsums[i] - out.A[i];
-    out.D[i] = ntotal - rowsums[i] - out.B[i];
+  if (scoretype == score_llr || scoretype == score_chisq) {
+    for (int i = 0; i < nt; i ++) {
+      out.B[i] = out.NcorpA - out.A[i];
+      out.C[i] = rowsums[i] - out.A[i];
+      out.D[i] = ntotal - rowsums[i] - out.B[i];
+    }
+  } else {
+    for (int i = 0; i < nt; i ++) {
+      out.C[i] = rowsums[i] - out.A[i]; // don't need C or D for the other
+    }
   }
   
   return out;
 }
 
-// [[Rcpp::export]]
-Rcpp::List getABCD2(IntegerVector ind, 
-                    IntegerVector start_vek, 
-                    IntegerVector nterm, 
-                    IntegerVector freqs, 
-                    IntegerVector termlist, 
-                    IntegerVector rowsums, 
-                    IntegerVector colsums, 
-                    int ntotal) {
-  ABCD abcd = getABCD(ind, 
-                      start_vek, 
-                      nterm, 
-                      freqs, 
-                      termlist, 
-                      rowsums, 
-                      colsums, 
-                      ntotal);
-  return Rcpp::List::create(Rcpp::Named("A") = abcd.A,
-                            Rcpp::Named("B") = abcd.B,
-                            Rcpp::Named("C") = abcd.C,
-                            Rcpp::Named("D") = abcd.D,
-                            Rcpp::Named("NcorpA") = abcd.NcorpA,
-                            Rcpp::Named("NcorpB") = abcd.NcorpB);
-  
-}
+// this is only a wrapper that returns the contingency tables as a list
+// not needed internally and currently not exported
+// Rcpp::export
+// Rcpp::List getABCD2(IntegerVector ind, 
+//                     IntegerVector start_vek, 
+//                     IntegerVector nterm, 
+//                     IntegerVector freqs, 
+//                     IntegerVector termlist, 
+//                     IntegerVector rowsums, 
+//                     IntegerVector colsums, 
+//                     int ntotal) {
+//   ABCD abcd = getABCD(ind, 
+//                       start_vek, 
+//                       nterm, 
+//                       freqs, 
+//                       termlist, 
+//                       rowsums, 
+//                       colsums, 
+//                       ntotal);
+//   return Rcpp::List::create(Rcpp::Named("A") = abcd.A,
+//                             Rcpp::Named("B") = abcd.B,
+//                             Rcpp::Named("C") = abcd.C,
+//                             Rcpp::Named("D") = abcd.D,
+//                             Rcpp::Named("NcorpA") = abcd.NcorpA,
+//                             Rcpp::Named("NcorpB") = abcd.NcorpB);
+//   
+// }
 
 // [[Rcpp::export]]
 NumericVector getScores(IntegerVector ind, 
@@ -114,7 +123,8 @@ NumericVector getScores(IntegerVector ind,
                       termlist, 
                       rowsums, 
                       colsums, 
-                      ntotal);
+                      ntotal,
+                      scoretype);
   
   NumericVector Anum = as<NumericVector>(abcd.A);
   NumericVector Bnum = as<NumericVector>(abcd.B);

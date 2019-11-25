@@ -5,24 +5,6 @@
 
 using namespace Rcpp;
 
-// getABCD2
-Rcpp::List getABCD2(IntegerVector ind, IntegerVector start_vek, IntegerVector nterm, IntegerVector freqs, IntegerVector termlist, IntegerVector rowsums, IntegerVector colsums, int ntotal);
-RcppExport SEXP _keyperm_getABCD2(SEXP indSEXP, SEXP start_vekSEXP, SEXP ntermSEXP, SEXP freqsSEXP, SEXP termlistSEXP, SEXP rowsumsSEXP, SEXP colsumsSEXP, SEXP ntotalSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< IntegerVector >::type ind(indSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type start_vek(start_vekSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type nterm(ntermSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type freqs(freqsSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type termlist(termlistSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type rowsums(rowsumsSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type colsums(colsumsSEXP);
-    Rcpp::traits::input_parameter< int >::type ntotal(ntotalSEXP);
-    rcpp_result_gen = Rcpp::wrap(getABCD2(ind, start_vek, nterm, freqs, termlist, rowsums, colsums, ntotal));
-    return rcpp_result_gen;
-END_RCPP
-}
 // getScores
 NumericVector getScores(IntegerVector ind, IntegerVector start_vek, IntegerVector nterm, IntegerVector freqs, IntegerVector termlist, IntegerVector rowsums, IntegerVector colsums, int ntotal, int scoretype, double laplace);
 RcppExport SEXP _keyperm_getScores(SEXP indSEXP, SEXP start_vekSEXP, SEXP ntermSEXP, SEXP freqsSEXP, SEXP termlistSEXP, SEXP rowsumsSEXP, SEXP colsumsSEXP, SEXP ntotalSEXP, SEXP scoretypeSEXP, SEXP laplaceSEXP) {
@@ -68,7 +50,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_keyperm_getABCD2", (DL_FUNC) &_keyperm_getABCD2, 8},
     {"_keyperm_getScores", (DL_FUNC) &_keyperm_getScores, 10},
     {"_keyperm_genPerm", (DL_FUNC) &_keyperm_genPerm, 13},
     {NULL, NULL, 0}
