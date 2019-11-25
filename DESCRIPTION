@@ -10,5 +10,5 @@ Imports: Rcpp (>= 1.0.1),
     Matrix,
     slam,
     tm
-LinkingTo: Rcpp, RcppArmadillo
+LinkingTo: Rcpp
 RoxygenNote: 7.0.0

@@ -1,6 +1,4 @@
-#include <RcppArmadillo.h>
-#include <RcppArmadilloExtensions/sample.h>
-// [[Rcpp::depends(RcppArmadillo)]]
+#include <Rcpp.h>
 
 using namespace Rcpp;
 
@@ -94,8 +92,6 @@ Rcpp::List getABCD2(IntegerVector ind,
   
 }
 
-//Rcpp::List getA(IntegerVector ind, 
-
 // [[Rcpp::export]]
 NumericVector getScores(IntegerVector ind, 
                         IntegerVector start_vek, 
@@ -178,12 +174,10 @@ NumericMatrix genPerm(IntegerVector ind,
   
   NumericMatrix out(nt, ncols_out);
   
-  NumericVector prob = NumericVector::create();
-  IntegerVector x =  seq(1, ndoc);
   IntegerVector ind2;
   
   for (int j = 0; j < nperm; j++) {
-    ind2 = RcppArmadillo::sample(x, ndocA, FALSE, prob);
+    ind2 = Rcpp::sample(ndoc, ndocA, FALSE);
     NumericVector G = getScores(ind2, start_vek, nterm, freqs, termlist, rowsums, colsums, ntotal, scoretype, laplace);
     
     // do calculations conditional on whether we want the full results (1) or just a summary (# <, # =,  #>) (2)
