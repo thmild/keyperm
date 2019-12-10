@@ -62,8 +62,19 @@ create_ifl <- function(tdm,
   # we convert to indices
   #
   # later versions may support a factor as input 
+  # 
+  # we need to be careful with to select only components from corpus that are
+  # included in subset_docs 
   
-  if (is.logical(corpus)) corpus <- which(corpus)
+  if (is.logical(corpus)) {
+    corpus <- which(corpus[subset_docs]) # easy case
+  } else if (is.integer(corpus)) {
+    corpus2 <- rep(FALSE, length(corpus))
+    corpus2[corpus] <- TRUE
+    corpus <- which(corpus2[subset_docs]) 
+  } else {
+    stop("only logical or integer vectors accepted for corpus")
+  }
   
   # create the actual indexed_frequency_list
   # details may change in future versions
