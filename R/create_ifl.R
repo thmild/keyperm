@@ -27,14 +27,18 @@ create_ifl <- function(tdm,
 
   # save row and column totals so that they do not have to be recalculated 
   #
-  # note that we include all terms in the  sums as we want total number of tokens per document
+  # note that we include all terms in the sums as we want total number of tokens per document
   
   tdm_rs <- slam::row_sums(tdm[subset_terms, subset_docs]) 
   tdm_cs <- slam::col_sums(tdm[, subset_docs]) 
   
   ntotal <- sum(tdm_cs)
   
+  if (any(tdm_rs == 0)) warning("Total frequency of at least one term is zero!")
+  if (any(tdm_cs == 0)) warning("At least one document is empty!")
+  
   # subsetting
+  # to do: take care about duplicated indices
   
   tdm <- tdm[subset_terms, subset_docs]  
   
@@ -46,7 +50,7 @@ create_ifl <- function(tdm,
   doc_lookup <- stats::aggregate(term ~ doc, tdm_df, length)
   names(doc_lookup)[2] <- "nterms"
   
-  # this is necessary so that we can handle empty documents
+  # this is necessary so that we can handle empty documents 
   
   doc_lookup <- merge(x = data.frame(doc = 1:dim(tdm)[2]), 
                       y = doc_lookup,
