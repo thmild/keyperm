@@ -200,14 +200,16 @@ NumericMatrix genPerm(IntegerVector ind,
         out(i, j) = G[i];
       }
     }
-    else{
+    else{     
       for (int i = 0; i < nt; i++) {
         double scorediff = observed[i] - G[i];
-        if (std::fabs(scorediff) <= 2 * std::numeric_limits<double>::epsilon()) 
+        if (std::isinf(observed[i]) && std::isinf(G[i]) && (observed[i] * G[i] > 0 )) 
+          out(i, 1) += 1; // case where both are +Inf or both are -Inf
+        else if (std::fabs(scorediff) <= 2 * std::numeric_limits<double>::epsilon()) 
           out(i, 1) += 1;
         else if (scorediff > 0) 
           out(i, 0) += 1;
-        else 
+        else if (scorediff < 0)
           out(i, 2) += 1;
       }
       
