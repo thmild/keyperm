@@ -77,7 +77,7 @@ head(round(pchisq(llr, df = 1, lower.tail = FALSE), digits = 4), n = 10)
 
 keyp <- keyperm(reuters_ifl, llr, type = "llr", 
                 laplace = 1, output = "counts", nperm = 1000)
-head((keyp[,2] + keyp[,3] + 1) / 1001, n = 10)
+head(p_value(keyp, alternative = "greater"), n = 10)
 
 # generate observed log-ratio values and (one-sided) p-values based
 # on the permutation distribution (document-by-document sampling model)
@@ -86,7 +86,7 @@ head((keyp[,2] + keyp[,3] + 1) / 1001, n = 10)
 logratio <- keyness_scores(reuters_ifl, type = "logratio", laplace = 1)
 keyp2 <- keyperm(reuters_ifl, logratio, type = "logratio", 
                 laplace = 1, output = "counts", nperm = 1000)
-head((keyp2[,2] + keyp2[,3] + 1) / 1001, n = 10)
+head(p_value(keyp2, alternative = "greater"), n = 10)
 }
 \author{
 \strong{Maintainer}: Thoralf Mildenberger \email{mild@zhaw.ch} (\href{https://orcid.org/0000-0001-7242-1873}{ORCID})

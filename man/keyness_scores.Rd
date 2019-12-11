@@ -59,12 +59,16 @@ and can be used for one- or two-sided tests.
 \deqn{diff = o11 / c1 - o12 / c2}
 
 \code{logratio} is based on a ratio of ratios and would be infinite when a term does not occur in either of the two corpora, irrespective of number of occurences in the other corpus. Hence, we use a laplace correction adding a (not neccesarily integer) number \eqn{k} of ficticious occurences to both corpora: 
- \deqn{logratio = log2( ((o11 + k) / (c1 + k)) / ((o12 + k) / (c2 + k)) }
+ \deqn{logratio = log2( ((o11 + k) / (c1 + k)) / ((o12 + k) / (c2 + k)) ) }
  where \eqn{o11} and \eqn{o12} are the number of occurences of the term of interest in Corpora A and B 
  and \eqn{c1} and \eqn{c2} are the total numbers of tokens in A and B. 
  Setting \eqn{k} to zero corresponds to the usual logratio (which may be 
  infinite). \eqn{k} is given by the \code{laplace} argument and 
  defaults to one, meaning one ficticious occurence is added to 
  either corpus. Doing so prevents infinite values but has little 
- effect when the number of occurences is large.
+ effect when the number of occurences is large.  
+ 
+ \code{ratio} is the same as \code{logratio} but omits the logarithm:
+ \deqn{ratio = ((o11 + k) / (c1 + k)) / ((o12 + k) / (c2 + k)) }
+ This leads to the same p-values but is faster to compute.
 }
