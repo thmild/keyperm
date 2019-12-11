@@ -9,7 +9,8 @@ const int score_logratio = 4;
 const int score_ratio = 5;
 
 const int return_scores = 1;
-const int return_summary = 2;
+// const int return_summary = 2;
+// currently not needed as there are only two possibilities
 
 const double one_over_log2 = 1.442695040888963387;
 
@@ -34,9 +35,7 @@ ABCD getABCD(IntegerVector ind,
   
   int nt = rowsums.size();
   int nind = ind.size();
-  int NcorpA = 0;
-  int NcorpB = 0;
-  
+
   ABCD out;
   
   out.A = Rcpp::IntegerVector(nt);
