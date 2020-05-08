@@ -62,7 +62,7 @@ keyp2_subset <- keyperm(reuters_ifl_subset, logratio_subset, type = "logratio",
 
 keyp2_combined <- combine_results(keyp2, keyp2_subset)
 
-# smaller p-values are based on 10000, the larger ones on 10000 random permutations
+# smaller p-values are based on 1000, the larger ones on 10000 random permutations
 # note that 10000 is still far too small for real applications
 
 head(p_value(keyp2_combined, alternative = "greater"), n = 10)
