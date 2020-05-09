@@ -11,9 +11,9 @@ keyperm(ifl, observed, type = "llr", laplace = 1, output = "counts", nperm)
 
 \item{observed}{The vector of observed values of the keyness scores as generarted by \code{keyness_scores()}}
 
-\item{type}{The type of keyness measure. One of \code{llr}, \code{chisq}, \code{diff} or \code{logratio}. See details.}
+\item{type}{The type of keyness measure. One of \code{llr}, \code{chisq}, \code{diff}, \code{logratio} or \code{ratio}. See details.}
 
-\item{laplace}{Parameter of laplace correction. Only relevant for \code{type = "logratio"}. See details.}
+\item{laplace}{Parameter of laplace correction. Only relevant for \code{type = "ratio"} and \code{type = "logratio"}. See details.}
 
 \item{output}{The type of output. For \code{output = "full"} a matrix with all generated scores is returned,
 for \code{output = "counts"} a matrix with three columns counting the number of permutations for which the 
@@ -23,8 +23,8 @@ score is strictly smaller than, equal to or strictly larger than the observed va
 }
 \value{
 A numeric matrix with number of rows equal to the number of terms. The columns contain either all permutation values
-    of the keyness score (\code{output = 1}) or the number of permutations for which the 
-    score is strictly smaller than, equal to or strictly larger than the observed value (\code{output = 2}).
+    of the keyness score (\code{output = "full"}) or the number of permutations for which the 
+    score is strictly smaller than, equal to or strictly larger than the observed value (\code{output = "counts"}).
 }
 \description{
 Calculate the permutation distributions of a given keyness measure for each term by 
@@ -43,6 +43,7 @@ Currently, the following types of scores are supported:
     \item{\code{chisq}}{The Chi-Square-Statistic}
     \item{\code{diff}}{Difference of relative frequencies}
     \item{\code{logratio}}{Binary logarithm of the ratio of the relative frequencies, possibly using a laplace correction to avoid infinite values.}
+    \item{\code{ratio}}{ratio of the relative frequencies, possibly using a laplace correction to avoid infinite values.}
  }
 
  \code{llr} and \code{chisq} are the test-statistics for a two-by-two contingency table. 

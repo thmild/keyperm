@@ -20,7 +20,7 @@
 #' both runs can then be combined into one object. The rationale behind this approach is that 
 #' in many cases small p-values need to be determined with much greater accurary than larger ones
 #' far away from significance, especially if a correction for multiple testing is to be applied 
-#' or the p-values are used for ranking. 
+#' or the p-values are used for ranking (although they should not...). 
 #' 
 #' @param results_1 Results from permutation test.  
 #'     Must be of class \code{keyperm_results_counts} 

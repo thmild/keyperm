@@ -33,7 +33,7 @@ For a one-sided p-value we use
 
 \deqn{pvalue_greater = (no. greater + no. equal + 1)/(no. of perms + 1) }
 or
-\deqn{pvalue_less = (no. greater + no. less + 1)/(no. of perms + 1) }
+\deqn{pvalue_less = (no. less + no. equal + 1)/(no. of perms + 1) }
 
 Adding 1 in both the numerator and denominator amounts to including the observed
 values. This results in a slightly conservative p-value, but guarantees that
