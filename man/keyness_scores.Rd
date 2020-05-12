@@ -14,7 +14,7 @@ keyness_scores(ifl, type = "llr", laplace = 1)
 \item{laplace}{Parameter of laplace correction. Only relevant for \code{type = "ratio"} and \code{type = "logratio"}. See details.}
 }
 \value{
-a numerical vector of the scores, one for each term.
+a numerical vector of the scores, one for each term. Terms are stored in the names attribute.
 }
 \description{
 Calculates a vector of observed keyness scores for a given pair of corpora.
