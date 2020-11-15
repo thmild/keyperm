@@ -25,5 +25,5 @@ demo("example_reuters", package = "keyperm")
 
 runs a commented toy example. 
 
-A paper describing the methodology is currently in preparation. 
+A paper describing the methodology in detail is currently in preparation. 
 
