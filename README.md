@@ -15,6 +15,8 @@ library(devtools)
 install_github("thmild/keyperm")
 ```
 
+The package includes C++ code that needs to be compiled during installation, so compilers etc. are needed. Especially on Windows, these might be tedious to install. 
+
 The main function ist `keyperm()`, see documentation. 
 
 ```
