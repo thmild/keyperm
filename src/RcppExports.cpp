@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // getScores
 NumericVector getScores(IntegerVector ind, IntegerVector start_vek, IntegerVector nterm, IntegerVector freqs, IntegerVector termlist, IntegerVector rowsums, IntegerVector colsums, int ntotal, int scoretype, double laplace);
 RcppExport SEXP _keyperm_getScores(SEXP indSEXP, SEXP start_vekSEXP, SEXP ntermSEXP, SEXP freqsSEXP, SEXP termlistSEXP, SEXP rowsumsSEXP, SEXP colsumsSEXP, SEXP ntotalSEXP, SEXP scoretypeSEXP, SEXP laplaceSEXP) {
@@ -48,10 +53,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// timesTwo
+NumericVector timesTwo(NumericVector x);
+RcppExport SEXP _keyperm_timesTwo(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_keyperm_getScores", (DL_FUNC) &_keyperm_getScores, 10},
     {"_keyperm_genPerm", (DL_FUNC) &_keyperm_genPerm, 13},
+    {"_keyperm_timesTwo", (DL_FUNC) &_keyperm_timesTwo, 1},
     {NULL, NULL, 0}
 };
 
