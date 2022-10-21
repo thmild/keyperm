@@ -39,7 +39,7 @@ Currently, the following types of scores are supported:
 
 The actual resampling procedure is implemented in an efficient manner using 
 the Rcpp package and utilizing a special data structure (indexed frequency list). 
-Currently, \code{keyperm} can generate indexed frequency list from term-document-matrices as implemented in
+Currently, \code{keyperm} can generate indexed frequency lists from term-document-matrices as implemented in
 the package \code{tm}.
 }
 \examples{
