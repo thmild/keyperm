@@ -31,7 +31,7 @@ head(round(pchisq(llr, df = 1, lower.tail = FALSE), digits = 4), n = 10)
 # generate permutation distribution and p-values based on document-by-document sampling model
 
 keyp <- keyperm(reuters_ifl, llr, type = "llr", 
-                laplace = 1, output = "counts", nperm = 1000)
+                laplace = 0, output = "counts", nperm = 1000)
 head(p_value(keyp, alternative = "greater"), n = 10)
 
 # generate observed log-ratio values and (one-sided) p-values based
