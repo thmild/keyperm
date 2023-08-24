@@ -47,7 +47,7 @@
 #' @return a numeric vector of p-values.
 #' @export
 p_value <- function(results, alternative = NULL) {
-  if (class(results) != "keyperm_results_counts")
+  if (!inherits(results, "keyperm_results_counts"))
     stop("only input of class keyperm_results_count is currently supported")
   if (is.null(alternative)) {
     alternative <- switch(attr(results, "scoretype"),

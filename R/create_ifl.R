@@ -1,3 +1,4 @@
+
 #' Create an Indexed Frequency List 
 #'
 #' The keyperm package stores frequency lists in a special data structure called
@@ -25,6 +26,10 @@ create_ifl <- function(tdm,
                        subset_docs = 1:dim(tdm)[2],
                        corpus) {
 
+  # To suppress CRAN warning
+  
+  tm::TermDocumentMatrix(NULL)
+  
   # save row and column totals so that they do not have to be recalculated 
   #
   # note that we include all terms in the sums as we want total number of tokens per document

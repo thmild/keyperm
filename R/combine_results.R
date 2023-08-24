@@ -32,7 +32,7 @@
 #' 
 #' @export
 combine_results <- function(results_1, results_2) {
-   if ((class(results_1) != "keyperm_results_counts") || (class(results_2) != "keyperm_results_counts"))
+   if (!inherits(results_1, "keyperm_results_counts") || !inherits(results_2, "keyperm_results_counts"))
      stop("only input of class keyperm_results_count is currently supported")
     
    scoretype <- attr(results_1, "scoretype")

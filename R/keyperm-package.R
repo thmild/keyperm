@@ -33,7 +33,11 @@
 #' the package \code{tm}.
 #' 
 #' @keywords internal
+#' 
 #'
 #' @example demo/example_reuters.R
 "_PACKAGE"
-#> [1] "_PACKAGE"
+
+#' @importFrom tm TermDocumentMatrix
+
+
