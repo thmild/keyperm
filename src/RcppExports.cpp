@@ -53,22 +53,10 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// timesTwo
-NumericVector timesTwo(NumericVector x);
-RcppExport SEXP _keyperm_timesTwo(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_keyperm_getScores", (DL_FUNC) &_keyperm_getScores, 10},
     {"_keyperm_genPerm", (DL_FUNC) &_keyperm_genPerm, 13},
-    {"_keyperm_timesTwo", (DL_FUNC) &_keyperm_timesTwo, 1},
     {NULL, NULL, 0}
 };
 

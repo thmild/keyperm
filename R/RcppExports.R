@@ -9,7 +9,3 @@ genPerm <- function(ind, start_vek, nterm, freqs, termlist, rowsums, colsums, nt
     .Call(`_keyperm_genPerm`, ind, start_vek, nterm, freqs, termlist, rowsums, colsums, ntotal, nperm, output, scoretype, observed, laplace)
 }
 
-timesTwo <- function(x) {
-    .Call(`_keyperm_timesTwo`, x)
-}
-
