@@ -18,7 +18,7 @@
 #' significance threshold are then excluded, and \code{keyperm()} is run a second time with a 
 #' (preferably) large number of permutations but using only the remaining terms. The results of
 #' both runs can then be combined into one object. The rationale behind this approach is that 
-#' in many cases small p-values need to be determined with much greater accurary than larger ones
+#' in many cases small p-values need to be determined with much greater accuracy than larger ones
 #' far away from significance, especially if a correction for multiple testing is to be applied 
 #' or the p-values are used for ranking (although they should not...). 
 #' 

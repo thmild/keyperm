@@ -12,7 +12,7 @@
 #' a document-by-document sampling model. 
 #' 
 #' The permutation distributions of a given keyness measure for 
-#' each term is calculated by repeatedly shuffeling the copus labels. 
+#' each term is calculated by repeatedly shuffling the corpus labels. 
 #' Number of documents per corpus is kept constant.
 #' 
 #' Apart from obtaining null distributions of common test statistics like 
@@ -27,7 +27,7 @@
 #'     \item{\code{logratio}}{Binary logarithm of the ratio of the relative frequencies, possibly using a laplace correction to avoid infinite values.}
 #' }
 #' 
-#' The actual resampling procedure is implemented in an efficient manner using 
+#' The actual resampling procedure is implemented in a fast manner using 
 #' the Rcpp package and utilizing a special data structure (indexed frequency list). 
 #' Currently, \code{keyperm} can generate indexed frequency list from term-document-matrices as implemented in
 #' the package \code{tm}.

@@ -13,12 +13,12 @@
 #'                   
 #' The object returned is of class \code{indexed_frequency_list}. In addition to the actual frequency 
 #' list it contains an index for fast access as well as pre-computed total number of tokens per
-#' document and total occurences per term. 
+#' document and total occurrences per term. 
 #' 
 #' @param tdm a tdm-matrix from the tm package. Currently, this is the only supported input, but others may be added in later versions.
-#' @param subset_terms vector of terms to be considered. Can be integer (indices) or boolean. Terms not included still are counted for total number of token per document.
-#' @param subset_docs vector of documents to be considered. Can be integer (indices) or boolean. Documents excluded do not contribute to total number of occurences of a term. 
-#' @param corpus vector indicating which documents belong to corpus A (first corpus). Can be integer (indices) or boolean. Currently, only comparisons of two corpora are supported.
+#' @param subset_terms vector of terms to be considered. Can be integer (indices) or Boolean. Terms not included still are counted for total number of token per document.
+#' @param subset_docs vector of documents to be considered. Can be integer (indices) or Boolean. Documents excluded do not contribute to total number of occurrences of a term. 
+#' @param corpus vector indicating which documents belong to corpus A (first corpus). Can be integer (indices) or Boolean. Currently, only comparisons of two corpora are supported.
 #' @return A list with class \code{indexed_frequency_list} containing the following components:
 #' @export
 create_ifl <- function(tdm, 

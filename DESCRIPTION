@@ -1,10 +1,10 @@
 Package: keyperm
 Type: Package
 Title: Keyword Analysis Using Permutation Tests
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R: person("Thoralf", "Mildenberger", email = "mild@zhaw.ch", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0001-7242-1873"))
-Description: Efficient implementation of permutation tests for keyword analysis in corpus linguistics as described in Mildenberger (2023) <arXiv:2308.13383>.
+Description: Fast implementation of permutation tests for keyword analysis in corpus linguistics. The aim is to identify words that are significantly more frequent in one corpus than in another. The method is described in Mildenberger (2023) <arXiv:2308.13383>.
 License: GPL (>= 2)
 Imports: slam,
   tm
